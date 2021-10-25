@@ -1,18 +1,25 @@
-<div class="row">
+<div class="row" style="width:100%">
     <div class="col">
         <input #searchSong type="text" (keyup)="search(searchSong.value)" class="form-control" placeholder="Search">
     </div>
-</div>
-<div class="card-columns m-5">
-    <div *ngFor="let artist of artists" class="card">
-        <img class="card-img-top" [src]="artist.images[0].url" alt="Card image cap">
-        <div class="card-body">
-            <h5 class="card-title">{{artist.name}}</h5>
-            <!-- <p *ngFor="let artist of release.artists" class="card-text">{{artist.name}}</p> -->
-            <span *ngFor="let genres of artist.genres" class="badge badge-light">{{artist.genres}}</span>
-        </div>
-        <div class="card-footer">
-            <small class="text-muted">Followers: {{artist.followers.total}}</small>
+    <!-- </div>
+<div class="container" style="width:100%">
+    <div class="card-columns m-5">
+        <div *ngFor="let artist of artists" class="card">
+            <img class="card-img-top" [src]="artist.images | noimage" alt="Card image cap">
+            <div class="card-body">
+                <h5 class="card-title">{{artist.name}}</h5> -->
+    <!-- <p *ngFor="let artist of release.artists" class="card-text">{{artist.name}}</p> -->
+    <!-- <span *ngFor="let genres of artist.genres" class="badge badge-light">Genres: {{artist.genres}}</span> -->
+    <!-- <ul class="list-group">
+                    <li *ngFor="let genres of artist.genres" class="badge badge-light">Genres: {{genres | titlecase }}</li>
+                </ul>
+            </div>
+            <div class="card-footer">
+                <small class="text-muted">Followers: {{artist.followers.total}}</small>
+            </div>
         </div>
     </div>
-</div>
+</div> -->
+
+    <app-cards [items]="artists"></app-cards>

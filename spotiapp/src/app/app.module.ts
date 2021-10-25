@@ -13,6 +13,9 @@ import { RUOTES} from './app.routes';
 import {HttpClientModule} from '@angular/common/http';
 //Services
 import { SpotifyService } from './services/spotify.service';
+import { NoimagePipe } from './pipes/noimage.pipe';
+import { GenresPipe } from './pipes/genres.pipe';
+import { CardsComponent } from './components/cards/cards.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +23,10 @@ import { SpotifyService } from './services/spotify.service';
     HomeComponent,
     SearchComponent,
     ArtistComponent,
-    NavbarComponent
+    NavbarComponent,
+    NoimagePipe,
+    GenresPipe,
+    CardsComponent
   ],
   imports: [
     BrowserModule,
