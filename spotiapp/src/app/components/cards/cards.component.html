@@ -1,5 +1,5 @@
-<div class="card-columns m-5">
-    <div *ngFor="let release of items" class="card">
+<div class="card-columns m-5 animated fadeIn">
+    <div (click)="seeArtist(release)" *ngFor="let release of items" class="card puntero">
         <img class="card-img-top" [src]="release.images | noimage" alt="Card image cap">
         <div class="card-body">
             <h5 class="card-title">{{release.name}}</h5>

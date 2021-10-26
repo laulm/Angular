@@ -9,15 +9,23 @@ import { SpotifyService } from '../../services/spotify.service';
 export class SearchComponent implements OnInit {
 
   artists:any[]=[];
+  loading:boolean=false;
   constructor(private spotifyService:SpotifyService) { }
 
   search(searchSong:string){
+    this.loading=true;
     console.log(searchSong);
     this.spotifyService.getArtists(searchSong).subscribe(
       (data:any)=>{
   this.artists = data;
   console.log(this.artists);
-  
+  this.loading=false;
+      },(err)=>{
+        if (err.error.error.message === 'No search query') {
+          this.loading=false;
+          this.artists=[];
+          
+        }
       }
     )
     
