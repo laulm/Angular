@@ -10,6 +10,9 @@ export class SearchComponent implements OnInit {
 
   artists:any[]=[];
   loading:boolean=false;
+  errorFlag:boolean=false;
+  errorMessage:string="";
+
   constructor(private spotifyService:SpotifyService) { }
 
   search(searchSong:string){
@@ -24,8 +27,10 @@ export class SearchComponent implements OnInit {
         if (err.error.error.message === 'No search query') {
           this.loading=false;
           this.artists=[];
-          
         }
+        this.errorFlag=true;
+      this.errorMessage = err.error.error.message;
+      this.loading=false;
       }
     )
     

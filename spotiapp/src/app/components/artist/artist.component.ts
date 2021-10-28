@@ -11,22 +11,20 @@ export class ArtistComponent implements OnInit {
 
   artist:any=[];
   loading:boolean=true;
-  constructor(
+  topTracks:any[]=[];
+  constructor
+  (
     private _activeRouter:ActivatedRoute,
     private __spotidyService:SpotifyService
-  ) { 
+  ) 
+  { 
 
     this._activeRouter.params.subscribe(params=>{
     let artistId:string= params.id; 
-    this.__spotidyService.getArtist(artistId).subscribe(data=>
-      
-      {
-        this.artist=data
-        console.log(this.artist)
-        console.log(this.artist.images[0].url);
-        this.loading=false;
-        ;
-      })
+    console.log(artistId);
+    
+    this.getArtist(artistId);
+    this.getArtistTracks(artistId);
       
     })
   }
@@ -34,4 +32,27 @@ export class ArtistComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  getArtist(artistId:any){
+    
+    this.__spotidyService.getArtist(artistId).subscribe(data=>
+      
+      {
+        this.artist=data
+        this.loading=false;
+        ;
+      })
+  }
+
+  getArtistTracks(artistId:string){
+    this.__spotidyService.getArtistTopTracks(artistId).subscribe(data =>
+      {
+       this.topTracks=data;
+       console.log(this.topTracks);
+        
+      })
+  }
+
+  splitUri(uri:string){ 
+    return uri.split(":",3)
+  }
 }

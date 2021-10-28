@@ -19,5 +19,6 @@
         </div>
     </div>
 </div> -->
+<app-error [message]="errorMessage" *ngIf="errorFlag"></app-error>
 <app-loading *ngIf="loading"></app-loading>
 <app-cards [items]="releases"></app-cards>

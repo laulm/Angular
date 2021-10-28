@@ -12,6 +12,8 @@ export class HomeComponent implements OnInit {
   countries: any[]=[];
   releases:any[]=[];
   loading:boolean=true;
+  errorFlag:boolean=false;
+  errorMessage:string="";
 
   constructor(
     private http:HttpClient,
@@ -30,6 +32,11 @@ export class HomeComponent implements OnInit {
     this.releases = data
     console.log(this.releases);
     this.loading=false;
+    },(error)=>{
+      this.errorFlag=true;
+      this.errorMessage = error.error.error.message;
+      this.loading=false;
+      
     });
   
     
